@@ -1,0 +1,38 @@
+---
+title: "session_day2"
+author: "Sang B. Mendy"
+format: html
+editor: visual
+---
+
+
+```{r}
+#Load packages
+library(epidemics)
+library(socialmixr)
+library(tidyverse)
+```
+
+---
+
+# Definition SEIR of initial values:
+```{r}
+#1. Population = 2.5e6
+#2. susceptible(s) = 0, 
+#3. Exposed(E)=0, 
+#4. Recover(R)= 0, 
+#5. Vaccination(V)=0
+#6. Infection=1/bf_pop
+
+  bf_pop <- 23.5e6
+bf_pop_obj <- epidemics::population(
+  name = "Burkina Faso",
+  demography_vector = bf_pop,
+  contact_matrix = matrix(1.0),
+  initial_conditions = matrix(c(1-(1/bf_pop), 0, 1/bf_pop, 0, 0),
+  nrow = 1, ncol = 5)
+)
+
+```
+
+---
